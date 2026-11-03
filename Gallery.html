@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | OrigamiForAll</title>
+  <meta name="description" content="Browse our gallery of handmade origami: cranes, flowers, animals, boats and more.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assests/css/style.css">
+    <link rel="icon" type="image/x-icon" href="Assests/images/logo/favicon.png">
+
+  <!-- Bootstrap 5 + Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+  <style>
+   
+
+    /* paper plane cursor */
+    html, body, a, button, .pill, .tile, .lb-btn {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'%3E%3Cpath d='M2 12 22 3l-5 18-5-7z' fill='%234F7A5E' stroke='%23455564' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 2 12, auto;
+    }
+
+    body {
+      background:  #faf6f1;;
+      color:  #2b3236;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* stop the page from scrolling behind an open lightbox */
+    body:has(.lb:target) { overflow: hidden; }
+
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+    ::selection { background:  #a9c4b3; color:   #2b3236; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #3d6b57;
+      outline-offset: 3px;
+    }
+
+    /* ---------- navbar ---------- */
+    h1,h2,h3,h4,h5,h6{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar{
+    background:#FFFDF8;
+    padding:12px 0;
+}
+
+.logo-text{
+    font-size:1.4rem;
+    font-weight:700;
+    color:#474747;
+}
+
+.nav-link{
+    color:#474747; 
+    font-weight:600;
+    margin:0 5px;
+    transition:0.3s;
+}
+
+.nav-link:hover{
+    color:#7EA8BE ;
+}
+
+
+.design-menu{
+    min-width: 350px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.dropdown-header{
+    color: #2a404c;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.dropdown-item{
+    padding: 3px 16px;
+    font-size: 15px;
+} 
+
+.dropdown-item:hover{
+    background-color: #f8f5ef;
+    color: #7EA8BE;
+}
+
+.start-btn{
+    background:#778f7e !important;
+    color:white;
+    padding:10px 20px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+.start-btn:hover{
+    background:#8fb09b;
+    color:white;
+}
+
+/* Mobile Menu */
+@media (max-width:991px){
+
+    .navbar-nav{
+        padding-top:15px;
+    }
+
+    .nav-item{
+        margin:5px 0;
+    }
+
+    .start-btn{
+        width:100%;
+        margin-top:10px;
+    }
+}
+
+    /* ---------- hero ---------- */
+    .g-hero { padding: 4rem 0 1.5rem; }
+
+    .g-hero h1 {
+      font-weight: 700;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.15;
+      max-width: 16ch;
+    }
+
+    .g-hero p {
+      color:  #5b6468;
+      font-size: 1.1rem;
+      max-width: 46ch;
+      margin-top: 0.75rem;
+    }
+
+    .crumbs {
+      font-size: 0.9rem;
+      color:  #5b6468;
+      margin-bottom: 1rem;
+    }
+
+    .crumbs a {
+      color: #3d6b57;
+      text-decoration: none;
+    }
+
+    .hero-img-container {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(43, 50, 54, 0.12);
+      border: 4px solid  #fffdf9;
+    }
+
+    .hero-img-container img {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ---------- filters (radio buttons + labels, no JS) ---------- */
+    .f-radio {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 1rem 0 1.5rem;
+    }
+
+    .pill {
+      border: 1px solid #cfc6ba;
+      background: transparent;
+      color:  #5b6468;
+      border-radius: 50px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+    }
+
+    .pill:hover {
+      border-color: #3d6b57;
+      color:#3d6b57;
+      transform: translateY(-2px);
+    }
+
+    .filters .sep {
+      width: 1px;
+      background: #e6ddd1;
+      margin: 0 0.5rem;
+    }
+
+  
+    /* ---------- masonry grid ---------- */
+    .grid {
+      column-count: 3;
+      column-gap: 1rem;
+    }
+
+    @media (max-width: 991px) { .grid { column-count: 2; } }
+    @media (max-width: 575px) { .grid { column-count: 1; } }
+
+    .tile {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0 0 1rem;
+      break-inside: avoid;
+      overflow: hidden;
+      border-radius: 16px;
+      background:  #f0d9cc;
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(61, 107, 87, 0.22);
+      color: inherit;
+    }
+
+    .tile.tall { aspect-ratio: 3 / 4; }
+    .tile.sq   { aspect-ratio: 1 / 1; }
+    .tile.wide { aspect-ratio: 4 / 3; }
+
+    .tile img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      
+    }
+
+    .cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.8rem 1rem;
+      background:  #fffdf9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cap h3 { font-size: 1.05rem; margin: 0; font-weight: 600; }
+    .cap small { color:  #5b6468; }
+
+    .lvl {
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 20px;
+      padding: 0.15rem 0.7rem;
+      white-space: nowrap;
+    }
+
+    .lvl.easy    { background:  #a9c4b3;  color: #1f3a2c; }
+    .lvl.medium  { background:  #f0d9cc; color: #6b3f27; }
+    .lvl.complex { background:  #b9c9d6;  color: #23384a; }
+
+    /* ---------- call to action ---------- */
+    .cta {
+      background:  #e6efe9;
+      border-radius: 18px;
+      padding: 1.6rem 2rem;
+      margin: 2.5rem 0 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cta h2 { font-size: 1.3rem; margin: 0; font-weight: 600; }
+
+    .btn-green {
+      background: #3d6b57;
+      color: #fff;
+      border-radius: 8px;
+      padding: 0.7rem 1.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .btn-green:hover {
+      background:  #2f5646;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- footer ---------- */
+    /* .site-footer {
+      background:  #222b3a;
+      color: #dcdfe4;
+      padding: 4rem 0 1.5rem;
+    }
+
+    .site-footer h4 {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+    }
+
+    .site-footer a {
+      color: #dcdfe4;
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .site-footer a:hover {
+      color:  #a9c4b3;
+      padding-left: 4px;
+    }
+
+    .site-footer ul { list-style: none; padding: 0; margin: 0; }
+    .site-footer li { margin-bottom: 0.8rem; }
+    .site-footer .about { max-width: 34ch; }
+
+    .site-footer .logo {
+      width: 200px;
+      height: 60px;
+      object-fit: contain;
+      object-position: left center;
+      margin-bottom: 1rem;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin-top: 2.5rem;
+      padding-top: 1.2rem;
+      text-align: center;
+    } */
+
+  
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="Assests/images/logo/SVG-preview (1).png" alt="OrigamiForAll Logo" width="220" class="me-2">
+            <!-- <span class="logo-text">OrigamiForAll</span> -->
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainMenu">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu Links -->
+        <div class="collapse navbar-collapse" id="mainMenu">
+
+            <ul class="navbar-nav ms-auto text-center">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="designDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Design
+                    </a>
+
+                    <div class="dropdown-menu p-3 design-menu">
+                       <div class="row">
+                         <div class="col-6">
+                           <h6 class="dropdown-header">By Level</h6>
+                            <a class="dropdown-item" href="Easy.html" target="_blank">Easy  (kids)</a>
+                            <a class="dropdown-item" href="Medium.html" target="_blank">Medium</a>
+                            <a class="dropdown-item" href="Complex.html" target="_blank">Complex (elders)</a>
+                         </div>
+                        <div class="col-6">
+                          <h6 class="dropdown-header">By Category</h6>
+                          <a class="dropdown-item" href="categories.html#faces">Faces</a>
+                           <a class="dropdown-item" href="categories.html#animals">Animals</a>
+                           <a class="dropdown-item" href="categories.html#birds">Birds</a>
+                          <a class="dropdown-item" href="categories.html#flowers">Flowers</a>
+                          <a class="dropdown-item" href="categories.html" target="_blank">All 10 categories</a>
+            </div>
+
+        </div>
+    </div>
+</li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html" target="_blank">Gallery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html" target="_blank">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html" target="_blank">Feedback</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html" target="_blank">Contact</a>
+                </li>
+
+            </ul>
+
+            <!-- Button -->
+            <div class="ms-lg-3 text-center mt-3 mt-lg-0">
+                <a href="folding.html" target="_blank" class="btn start-btn">
+                    Start Folding
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="g-hero">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <h1>Folded by hand, one sheet at a time</h1>
+          <p>Browse our favorite paper creations, from simple boats to detailed cranes.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="hero-img-container">
+            <img src="Assests/images/gallery/herosection.jpg.jpeg" alt="Traditional Japanese origami workshop illustration" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== GALLERY ===== -->
+  <main class="container pb-2">
+
+  
+    <div class="filters" role="group" aria-label="Filter gallery">
+      <label class="pill" for="f-all">All</label>
+      <label class="pill" for="f-animals">Animals</label>
+      <label class="pill" for="f-birds">Birds</label>
+      <label class="pill" for="f-flowers">Flowers</label>
+      <label class="pill" for="f-boats">Boats</label>
+      <label class="pill" for="f-craft">Craft</label>
+      <span class="sep d-none d-md-block"></span>
+      <label class="pill" for="f-easy">Easy</label>
+      <label class="pill" for="f-medium">Medium</label>
+      <label class="pill" for="f-complex">Complex</label>
+    </div>
+
+    <div class="grid">
+
+      <a class="tile tall" href="#lb-1" data-cat="birds" data-lvl="easy">
+        <img src="Assests/images/gallery/g.bird.jpg.jpeg" alt="Paper crane folded from peach washi paper" loading="lazy">
+        <div class="cap">
+          <div>
+          <h3>Paper crane</h3>
+          <small>Birds</small>
+        </div>
+        <span class="lvl easy">Easy</span>
+      </div>
+      </a>
+
+      <a class="tile wide" href="#lb-2" data-cat="birds" data-lvl="medium">
+        <img src="Assests/images/gallery/g.senbzuru.jpg.jpeg" alt="String of colorful origami cranes" loading="lazy">
+        <div class="cap">
+          <div>
+          <h3>Senbazuru</h3>
+          <small>Birds</small></div>
+          <span class="lvl medium">Medium</span>
+        </div>
+      </a>
+
+      <a class="tile sq" href="#lb-3" data-cat="flowers" data-lvl="easy">
+        <img src="Assests/images/gallery/g.flower.jpg.jpeg" alt="Origami flower folded from a single sheet" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Paper flower</h3>
+          <small>Flowers</small>
+        </div>
+        <span class="lvl easy">Easy</span>
+      </div>
+      </a>
+
+      <a class="tile tall" href="#lb-4" data-cat="flowers" data-lvl="medium">
+        <img src="Assests/images/gallery/g.lotus.jpg.jpeg" alt="Origami lotus in soft pink paper" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Lotus</h3>
+            <small>Flowers</small>
+          </div>
+          <span class="lvl medium">Medium</span>
+        </div>
+      </a>
+
+      <a class="tile sq" href="#lb-5" data-cat="animals" data-lvl="medium">
+        <img src="Assests/images/gallery/g.fox.jpg.jpeg" alt="Origami fox on a cream background" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Fox</h3>
+            <small>Animals</small>
+          </div>
+          <span class="lvl medium">Medium</span>
+        </div>
+      </a>
+
+      <a class="tile tall" href="#lb-6" data-cat="animals" data-lvl="complex">
+        <img src="Assests/images/gallery/g.elephant.jpg.jpeg" alt="Folded paper elephant" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Elephant</h3>
+            <small>Animals</small>
+          </div>
+          <span class="lvl complex">Complex</span>
+        </div>
+      </a>
+
+      <a class="tile wide" href="#lb-7" data-cat="boats" data-lvl="easy">
+        <img src="Assests/images/gallery/g.boat.jpg.jpeg" alt="Simple origami paper boat" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Paper boat</h3>
+            <small>Boats</small>
+          </div>
+          <span class="lvl easy">Easy</span>
+        </div>
+      </a>
+
+      <a class="tile sq" href="#lb-8" data-cat="animals" data-lvl="easy">
+        <img src="Assests/images/gallery/g.butterfly.jpg.jpeg" alt="Origami butterfly with patterned wings" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Butterfly</h3>
+            <small>Animals</small>
+          </div>
+          <span class="lvl easy">Easy</span>
+        </div>
+      </a>
+
+      <a class="tile tall" href="#lb-9" data-cat="animals" data-lvl="easy">
+        <img src="Assests/images/gallery/g.frog.jpg.jpeg" alt="Green origami frog" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Jumping frog</h3>
+            <small>Animals</small>
+          </div>
+          <span class="lvl easy">Easy</span>
+        </div>
+      </a>
+
+      <a class="tile wide" href="#lb-10" data-cat="craft" data-lvl="easy">
+        <img src="Assests/images/gallery/g.washi.jpg.jpeg" alt="Stack of colorful washi paper sheets" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Washi paper</h3>
+            <small>Craft</small>
+          </div>
+          <span class="lvl easy">Easy</span>
+        </div>
+      </a>
+
+      <a class="tile sq" href="#lb-11" data-cat="craft" data-lvl="medium">
+        <img src="Assests/images/gallery/g.folding.jpg.jpeg" alt="Hands folding a sheet of origami paper" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Folding in progress</h3>
+            <small>Craft</small>
+          </div>
+          <span class="lvl medium">Medium</span>
+        </div>
+      </a>
+
+      <a class="tile tall" href="#lb-12" data-cat="craft" data-lvl="complex">
+        <img src="Assests/images/gallery/g.star.jpg.jpeg" alt="Origami star folded from paper" loading="lazy">
+        <div class="cap">
+          <div>
+            <h3>Origami star</h3>
+            <small>Craft</small>
+          </div>
+          <span class="lvl complex">Complex</span>
+        </div>
+      </a>
+
+    </div>
+
+    <section class="cta" aria-label="Share your origami">
+      <h2>Folded something you love? Share it with us.</h2>
+      <a class="btn-green" href="feedback.html">Send feedback</a>
+    </section>
+  </main>
+
+ 
+
+  <!-- FOOTER -->
+ <footer class="footer-section">
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <!-- Logo & About -->
+            <div class="col-lg-4">
+                <img src="Assests/images/logo/jpeg.jpg" alt="Logo" width="180">
+
+                <p class="mt-3">
+                    Origami For All helps people of every age discover the joy of paper folding through fun and easy-to-follow tutorials.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <h5>Quick Links</h5>
+
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="categories.html">Designs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="col-lg-3 col-md-6">
+                <h5>Categories</h5>
+
+                <ul class="footer-links">
+                    <li><a href="categories.html#animals">Animals</a></li>
+                    <li><a href="categories.html#birds">Birds</a></li>
+                    <li><a href="categories.html#flowers">Flowers</a></li>
+                    <li><a href="categories.html#boats">Boats</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-lg-3">
+                <h5>Contact</h5>
+
+                <p>Email: info@origamiforall.com</p>
+                <p>Phone: +92 300 1234567</p>
+                <p>Pakistan</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center copyright">
+            <p>
+                © 2026 Origami For All. All Rights Reserved.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+  <!-- Bootstrap's own script, needed for the navbar toggle and dropdown -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - OrigamiForAll</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assests/css/style.css">
+    <link rel="icon" type="image/x-icon" href="Assests/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #FBF9F5;
+            --card-bg: #F5F1EB;
+            --text-main: #2C3E50;
+            --text-muted: #606F7B;
+            --accent-green: #4A6B5B;
+            --accent-green-hover: #3B5548;
+            --footer-bg: #414A53;
+            --border-color: #E2DBD0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+         /* ---------- hero ---------- */
+    .g-hero { padding: 4rem 0 1.5rem; }
+
+    .g-hero h1 {
+      font-weight: 600;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.15;
+      max-width: 16ch;
+    }
+
+    .g-hero p {
+      color:  #5b6468;
+      font-size: 1.1rem;
+      max-width: 46ch;
+      margin-top: 0.75rem;
+    }
+
+    .crumbs {
+      font-size: 0.9rem;
+      color:  #5b6468;
+      margin-bottom: 1rem;
+    }
+
+    .crumbs a {
+      color: #3d6b57;
+      text-decoration: none;
+    }
+
+    .hero-img-container {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(43, 50, 54, 0.12);
+      border: 4px solid  #fffdf9;
+    }
+
+    .hero-img-container img {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+        /* ............................. */
+        
+        .about-hero {
+            text-align: left;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        
+        .hero-image-container {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.2;
+            max-width: 700px;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .story-content h3, .mission-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .story-content p, .mission-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .mission-box {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Second Image Styling */
+        .image {
+            border-radius: 8px;
+            margin-bottom: 4rem;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            width: 100%;
+            height: 550px;
+            display: block;
+            overflow: hidden;
+        }
+
+        .highlights-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .highlight-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .highlight-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        main {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid, .highlights-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-hero h1 {
+                font-size: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="Assests/images/logo/SVG-preview (1).png" alt="OrigamiForAll Logo" width="220" class="me-2">
+            <!-- <span class="logo-text">OrigamiForAll</span> -->
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainMenu">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu Links -->
+        <div class="collapse navbar-collapse" id="mainMenu">
+
+            <ul class="navbar-nav ms-auto text-center">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="designDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Design
+                    </a>
+
+                    <div class="dropdown-menu p-3 design-menu">
+                       <div class="row">
+                         <div class="col-6">
+                           <h6 class="dropdown-header">By Level</h6>
+                            <a class="dropdown-item" href="Easy.html" target="_blank">Easy  (kids)</a>
+                            <a class="dropdown-item" href="Medium.html" target="_blank">Medium</a>
+                            <a class="dropdown-item" href="Complex.html" target="_blank">Complex (elders)</a>
+                         </div>
+                        <div class="col-6">
+                          <h6 class="dropdown-header">By Category</h6>
+                          <a class="dropdown-item" href="categories.html#faces">Faces</a>
+                           <a class="dropdown-item" href="categories.html#animals">Animals</a>
+                           <a class="dropdown-item" href="categories.html#birds">Birds</a>
+                          <a class="dropdown-item" href="categories.html#flowers">Flowers</a>
+                          <a class="dropdown-item" href="categories.html" target="_blank">All 10 categories</a>
+            </div>
+
+        </div>
+    </div>
+</li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html" target="_blank">Gallery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html" target="_blank">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html" target="_blank">Feedback</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html" target="_blank">Contact</a>
+                </li>
+
+            </ul>
+
+            <!-- Button -->
+            <div class="ms-lg-3 text-center mt-3 mt-lg-0">
+                <a href="folding.html" target="_blank" class="btn start-btn">
+                    Start Folding
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+    <main>
+         <!-- ===== HERO ===== -->
+  <header class="g-hero">
+    <div class="container">
+      <!-- <div class="crumbs"><a href="index.html">Home</a> / Gallery</div> -->
+
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <h1>Folding stories, one sheet at a time</h1>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="hero-img-container">
+            <img src="Assests/images/about/first.jpeg" alt="Origami Making Process">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+        <div class="about-grid">
+            <div class="story-content">
+                <h3>Where Origami Began</h3>
+                <p>Origami comes from the Japanese words <strong>ori</strong> (fold) and <strong>kami</strong> (paper). Paper reached Japan from China around the 6th century, and the folding tradition grew there into a celebrated art form.</p>
+                <p>What started as a historic tradition has blossomed into a modern dedication to the geometry, mindfulness, and soul of paper art.</p>
+            </div>
+            <div class="mission-box mission-content">
+                <h3>Our Mission</h3>
+                <p>To preserve traditional folding techniques while making origami accessible, calming, and joyful for all generations—from curious kids taking their first folds to experienced elders looking for mindful art.</p>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="Assests/images/about/second.jpeg" alt="Traditional Japanese Origami Art">
+        </div>
+
+        <div class="highlights-container">
+            <div class="highlight-card">
+                <h4>For every age</h4>
+                <p>Easy models designed perfectly for kids' growing hands, alongside complex, intricate masterpieces for dedicated enthusiasts.</p>
+            </div>
+            <div class="highlight-card">
+                <h4>Rooted in Japan</h4>
+                <p>Deeply inspired by authentic Washi paper textures, historical folding heritage, and the peaceful philosophy of traditional craft.</p>
+            </div>
+        </div>
+    </main>
+
+<!-- FOOTER -->
+ <footer class="footer-section">
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <!-- Logo & About -->
+            <div class="col-lg-4">
+                <img src="Assests/images/logo/jpeg.jpg" alt="Logo" width="180">
+
+                <p class="mt-3">
+                    Origami For All helps people of every age discover the joy of paper folding through fun and easy-to-follow tutorials.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <h5>Quick Links</h5>
+
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="categories.html">Designs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="col-lg-3 col-md-6">
+                <h5>Categories</h5>
+
+                <ul class="footer-links">
+                    <li><a href="categories.html#animals">Animals</a></li>
+                    <li><a href="categories.html#birds">Birds</a></li>
+                    <li><a href="categories.html#flowers">Flowers</a></li>
+                    <li><a href="categories.html#boats">Boats</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-lg-3">
+                <h5>Contact</h5>
+
+                <p>Email: info@origamiforall.com</p>
+                <p>Phone: +92 300 1234567</p>
+                <p>Pakistan</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center copyright">
+            <p>
+                © 2026 Origami For All. All Rights Reserved.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
