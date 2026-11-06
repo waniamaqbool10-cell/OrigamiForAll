@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Assests/css/style.css">
+    <link rel="stylesheet" href="Assests/css/categories.css">
     <link rel="icon" type="image/x-icon" href="Assests/images/logo/favicon.png">
 
   <!-- Bootstrap 5 + Bootstrap Icons -->
@@ -185,15 +186,6 @@
       padding: 1rem 0 1.5rem;
     }
 
-    .pill {
-      border: 1px solid #cfc6ba;
-      background: transparent;
-      color:  #5b6468;
-      border-radius: 50px;
-      padding: 0.4rem 1.1rem;
-      font-size: 0.95rem;
-      transition: all 0.25s ease;
-    }
 
     .pill:hover {
       border-color: #3d6b57;
@@ -310,52 +302,21 @@
       color: #fff;
       transform: translateY(-2px);
     }
+  .categories,
+.levels{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
-    /* ---------- footer ---------- */
-    /* .site-footer {
-      background:  #222b3a;
-      color: #dcdfe4;
-      padding: 4rem 0 1.5rem;
-    }
+.categories{
+    margin: 20px 0;
+}
 
-    .site-footer h4 {
-      color: #fff;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 1.1rem;
-    }
-
-    .site-footer a {
-      color: #dcdfe4;
-      text-decoration: none;
-      transition: color 0.2s, padding-left 0.2s;
-    }
-
-    .site-footer a:hover {
-      color:  #a9c4b3;
-      padding-left: 4px;
-    }
-
-    .site-footer ul { list-style: none; padding: 0; margin: 0; }
-    .site-footer li { margin-bottom: 0.8rem; }
-    .site-footer .about { max-width: 34ch; }
-
-    .site-footer .logo {
-      width: 200px;
-      height: 60px;
-      object-fit: contain;
-      object-position: left center;
-      margin-bottom: 1rem;
-    }
-
-    .copyright {
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      margin-top: 2.5rem;
-      padding-top: 1.2rem;
-      text-align: center;
-    } */
-
-  
+.levels{
+    margin-bottom: 40px;
+}
   </style>
 </head>
 <body>
@@ -466,19 +427,22 @@
   <!-- ===== GALLERY ===== -->
   <main class="container pb-2">
 
-  
-    <div class="filters" role="group" aria-label="Filter gallery">
-      <label class="pill" for="f-all">All</label>
-      <label class="pill" for="f-animals">Animals</label>
-      <label class="pill" for="f-birds">Birds</label>
-      <label class="pill" for="f-flowers">Flowers</label>
-      <label class="pill" for="f-boats">Boats</label>
-      <label class="pill" for="f-craft">Craft</label>
-      <span class="sep d-none d-md-block"></span>
-      <label class="pill" for="f-easy">Easy</label>
-      <label class="pill" for="f-medium">Medium</label>
-      <label class="pill" for="f-complex">Complex</label>
-    </div>
+
+    <div class="categories">
+    <button class="filter-btn cat-btn active" data-cat="all">All</button>
+<button class="filter-btn cat-btn" data-cat="animals">Animals</button>
+    <button class="filter-btn cat-btn" data-cat="birds">Birds</button>
+    <button class="filter-btn cat-btn" data-cat="flowers">Flowers</button>
+    <button class="filter-btn cat-btn" data-cat="boats">Boats</button>
+    <button class="filter-btn cat-btn" data-cat="craft">Craft</button>
+</div>
+
+<div class="levels">
+    <button class="filter-btn lvl-btn active" data-lvl="all">All</button>
+    <button class="filter-btn lvl-btn" data-lvl="easy">Easy</button>
+    <button class="filter-btn lvl-btn" data-lvl="medium">Medium</button>
+    <button class="filter-btn lvl-btn" data-lvl="complex">Complex</button>
+</div>
 
     <div class="grid">
 
@@ -683,6 +647,7 @@
 
     </div>
 </footer>
+<script src="Assests/javascript/gallery.js"></script>
 
   <!-- Bootstrap's own script, needed for the navbar toggle and dropdown -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
