@@ -624,6 +624,39 @@
             text-align: center;
             font-size: 1.05rem;
         }
+
+        /* POP UP */
+        .popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.popup-content{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    max-width:450px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.popup-content h3{
+    color:#778f7e;
+}
+
+.popup-content button{
+    background:#778f7e;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:25px;
+    margin-top:15px;
+}
     </style>
 </head>
 
@@ -744,7 +777,7 @@
 
                     <!-- The browser checks the required fields itself. After sending, the page
                          reloads at #sent, which switches the box to the thank you message. -->
-                    <form action="feedback.html#sent" method="get">
+                    <form action="feedback.html#sent" id="feedbackForm" method="get" onsubmit="event.preventDefault(); showPopup();">
                         <div class="input-group-box">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" class="form-control" required>
@@ -865,7 +898,37 @@
             </div>
         </section>
     </main>
+<!-- POP UP -->
+ <div id="successPopup" class="popup">
+    <div class="popup-content">
+        <h3>⭐ Your Feedback Has Been Folded In!</h3>
 
+        <p>
+            Arigatou for helping OrigamiForAll grow.
+            Your thoughts are now part of our next fold,
+            helping us create a better experience for every visitor.
+        </p>
+
+        <p>
+            Every suggestion matters, just like every fold in origami. 🌸
+        </p>
+
+        <button onclick="closePopup()">
+            Keep Exploring ✨
+        </button>
+    </div>
+</div>
+<script>
+function showPopup() {
+    document.getElementById("successPopup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("successPopup").style.display = "none";
+
+    document.getElementById("feedbackForm").reset();
+}
+</script>
     <!-- FOOTER -->
  <footer class="footer-section">
     <div class="container">
@@ -887,9 +950,9 @@
 
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="categories.html">Designs</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="categories.html" target="_blank">Designs</a></li>
+                    <li><a href="gallery.html" target="_blank">Gallery</a></li>
+                    <li><a href="about.html" target="_blank">About</a></li>
                 </ul>
             </div>
 
@@ -898,10 +961,10 @@
                 <h5>Categories</h5>
 
                 <ul class="footer-links">
-                    <li><a href="categories.html#animals">Animals</a></li>
-                    <li><a href="categories.html#birds">Birds</a></li>
-                    <li><a href="categories.html#flowers">Flowers</a></li>
-                    <li><a href="categories.html#boats">Boats</a></li>
+                    <li><a href="categories.html#animals"  target="_blank">Animals</a></li>
+                    <li><a href="categories.html#birds" target="_blank">Birds</a></li>
+                    <li><a href="categories.html#flowers" target="_blank">Flowers</a></li>
+                    <li><a href="categories.html#boats" target="_blank">Boats</a></li>
                 </ul>
             </div>
 

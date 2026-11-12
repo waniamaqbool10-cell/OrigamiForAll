@@ -1,403 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paper Crane (Tsuru) | OrigamiForAll</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;700&family=Poppins:wght@600;700&display=swap">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Assests/css/style.css">
     <link rel="icon" type="image/x-icon" href="Assests/images/logo/favicon.png">
+    <title>Easy Origami Designs | OrigamiForAll</title>
 
-  <style>
-    /* ---------- BODY ---------- */
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #FBF5EE;
-      color: #455564;
-      line-height: 1.5;
-      margin: 0;
-      padding: 0;
-
-      /* Paper plane cursor */
+</head>
+<style>
+    /* paper plane cursor */
+    html, body, a, button, .pill, .tile, .lb-btn {
       cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'%3E%3Cpath d='M2 12 22 3l-5 18-5-7z' fill='%234F7A5E' stroke='%23455564' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 2 12, auto;
     }
 
-    h1, h2, h3 {
-      font-family: 'Noto Serif JP', serif;
-      color: #455564;
-    }
-
-    a {
-      text-decoration: none;
-      color: #455564;
-    }
-
-    a:hover {
-      color: #4F7A5E;
-    }
-
-    /* ---------- NAVBAR ---------- */
-    .navbar {
-      background: #FFFDF8 !important;
-      padding: 12px 0;
-    }
-
-    .nav-link {
-      color: #474747 !important;
-      font-weight: 600;
-      margin: 0 5px;
-      transition: 0.3s;
-    }
-
-    .nav-link:hover {
-      color: #7EA8BE !important;
-    }
-
-    .design-menu {
-      min-width: 350px;
-      border: none;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    .dropdown-header {
-      color: #2a404c;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .dropdown-item {
-      padding: 3px 16px;
-      font-size: 15px;
-    }
-
-    .dropdown-item:hover {
-      background-color: #f8f5ef;
-      color: #7EA8BE;
-    }
-
-    .start-btn {
-      background: #A8C3B0;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: 600;
-    }
-
-    .start-btn:hover {
-      background: #8fb09b;
-      color: white;
-    }
-
-    @media (max-width: 991px) {
-      .navbar-nav {
-        padding-top: 15px;
-      }
-
-      .nav-item {
-        margin: 5px 0;
-      }
-
-      .start-btn {
-        width: 100%;
-        margin-top: 10px;
-      }
-    }
-
-    /* ---------- MAIN + BREADCRUMB ---------- */
-    .main-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .breadcrumb {
-      font-size: 14px;
-      padding: 28px 0 24px;
-    }
-
-    .breadcrumb strong {
-      color: #4a5866;
-    }
-
-    /* ---------- HERO ---------- */
-    .design-hero {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .photo-box {
-      background: #F4E3D7;
-      height: 320px;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 10px 28px rgba(69, 85, 100, 0.15);
-
-      /* Reveals from left, then floats gently */
-      animation:
-        heroReveal 1s ease-out backwards,
-        heroFloat 6s ease-in-out 1s infinite;
-    }
-
-    .photo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-
-      /* Starts zoomed in, then settles */
-      animation: heroZoom 1.8s ease-out backwards;
-      transition: transform 0.6s ease;
-    }
-
-    .photo-box:hover img {
-      transform: scale(1.06);
-    }
-
-    @keyframes heroReveal {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-        clip-path: inset(0 100% 0 0 round 8px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0);
-        clip-path: inset(0 0 0 0 round 8px);
-      }
-    }
-
-    @keyframes heroZoom {
-      from {
-        transform: scale(1.2);
-      }
-
-      to {
-        transform: scale(1);
-      }
-    }
-
-    @keyframes heroFloat {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    .tag {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #4F7A5E;
-    }
-
-    .design-info h1 {
-      font-size: 38px;
-      margin-bottom: 14px;
-    }
-
-    .design-info p {
-      font-size: 15px;
-      margin-bottom: 14px;
-    }
-
-    .meta {
-      font-size: 14px;
-    }
-
-    .meta strong {
-      color: #4a5866;
-    }
-
-    .meta span {
-      margin-right: 14px;
-    }
-
-    /* ---------- STEPS ---------- */
-    .steps {
-      margin: 50px 0 60px;
-    }
-
-    .steps h2 {
-      font-size: 28px;
-      margin-bottom: 22px;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .step-card {
-      background: #fff;
-      border: 1px solid #E6D5C5;
-      padding: 18px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(69, 85, 100, 0.08);
-      transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
-
-      /* Cards slide up */
-      animation: cardUp 0.6s ease backwards;
-    }
-
-    /* Scroll reveal for supported browsers */
-    @supports (animation-timeline: view()) {
-      .step-card {
-        animation: cardUp linear backwards;
-        animation-delay: 0s;
-        animation-timeline: view();
-        animation-range: entry 0% entry 45%;
-      }
-    }
-
-    @keyframes cardUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .step-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 14px 28px rgba(69, 85, 100, 0.15);
-      border-color: #4F7A5E;
-    }
-
-    .step-img {
-      background: #F4E3D7;
-      height: 220px;
-      width: 100%;
-      margin-bottom: 16px;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    .step-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .step-card:hover .step-img img {
-      transform: scale(1.08);
-    }
-
-    .step-card p {
-      font-size: 14px;
+    body {
+      background:  #faf6f1;;
+      color:  #2b3236;
+      font-family: 'Poppins', sans-serif;
       line-height: 1.6;
-      margin: 0;
     }
 
-    .step-card strong {
-      color: #455564;
+    body:has(.lb:target) { overflow: hidden; }
+
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+   .design-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+    height:100%;
+}
+
+.design-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.design-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.design-card h4{
+    color:#2a404c;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.design-card p{
+    color:#666;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.cta {
+      background:  #e6efe9;
+      border-radius: 18px;
+      padding: 1.6rem 2rem;
+      margin: 2.5rem 123px 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    @media (max-width: 991px) {
-      .design-hero {
-        grid-template-columns: 1fr;
-      }
+    .cta h2 { font-size: 1.3rem; margin: 0; font-weight: 600; }
 
-      .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 576px) {
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ---------- FOOTER ---------- */
-    .footer-section {
-      background-color: #1f2937;
+    .btn-green {
+      background: #3d6b57;
       color: #fff;
-      padding: 60px 0 20px;
-    }
-
-    .footer-section h5 {
-      margin-bottom: 20px;
+      border-radius: 8px;
+      padding: 0.7rem 1.4rem;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s, transform 0.25s;
     }
 
-    .footer-section p {
-      color: #d1d5db;
+    .btn-green:hover {
+      background:  #2f5646;
+      color: #fff;
+      transform: translateY(-2px);
     }
-
-    .footer-links {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 10px;
-    }
-
-    .footer-links a {
-      color: #d1d5db;
-    }
-
-    .footer-links a:hover {
-      color: #7EA8BE;
-    }
-
-    .copyright p {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    @media (max-width: 576px) {
-      .footer-section img {
-        width: 140px;
-      }
-    }
-
-    /* ---------- REDUCED MOTION ---------- */
-    @media (prefers-reduced-motion: reduce) {
-      .step-card,
-      .step-img img,
-      .photo-box,
-      .photo-box img {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
-</head>
-
+</style>
 <body>
-
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
 
         <!-- Logo -->
@@ -480,132 +177,116 @@
 
     </div>
 </nav>
+    <section class="tutorial-section py-5">
+    <div class="container">
 
-  <!-- ===== MAIN ===== -->
-  <main class="main-container">
+        <h1 class="text-center mb-5">🌱 Easy Origami Designs</h1>
 
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb" aria-label="breadcrumb">
-      <a href="designs.html">Designs</a>
-      /
-      <a href="designs.html?cat=birds">Birds</a>
-      /
-      <strong>Paper Crane</strong>
-    </nav>
+        <div class="row g-4">
+        <!-- Paper Crane -->
+<div class="col-lg-4 col-md-6">
+    <a href="papercrane.html" class="text-decoration-none">
+        <div class="design-card">
+            <img src="Assests/images/gallery/g.bird.jpg.jpeg" alt="Paper Crane">
+            <div class="p-3">
+                <h4>Paper Crane</h4>
+                <p>
+                    Learn the traditional origami crane, one of the most famous
+                    and beginner-friendly paper folding models.
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
 
-    <!-- Hero Section -->
-    <section class="design-hero">
+<!-- Butterfly -->
+<div class="col-lg-4 col-md-6">
+    <a href="butterfly.html" class="text-decoration-none">
+        <div class="design-card">
+            <img src="Assests/images/gallery/g.butterfly.jpg.jpeg" alt="Butterfly">
+            <div class="p-3">
+                <h4>Butterfly</h4>
+                <p>
+                    Create a beautiful butterfly using simple folds and a single
+                    square sheet of paper.
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
 
-      <div class="photo-box">
-        <img
-          src="Assests/images/easy/watermarked.jpg.jpeg"
-          alt="Paper Crane (Tsuru)"
-        >
-      </div>
+<!-- Paper Flower -->
+<div class="col-lg-4 col-md-6">
+    <a href="paperflower.html" class="text-decoration-none">
+        <div class="design-card">
+            <img src="Assests/images/gallery/g.flower.jpg.jpeg" alt="Paper Flower">
+            <div class="p-3">
+                <h4>Paper Flower</h4>
+                <p>
+                    A colorful flower design perfect for beginners and decorative
+                    craft projects.
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
 
-      <div class="design-info">
-        <p class="tag">ORIGAMI &middot; EASY</p>
+<!-- Jumping Frog -->
+<div class="col-lg-4 col-md-6">
+    <a href="frog.html" class="text-decoration-none">
+        <div class="design-card">
+            <img src="Assests/images/gallery/g.frog.jpg.jpeg" alt="Jumping Frog">
+            <div class="p-3">
+                <h4>Jumping Frog</h4>
+                <p>
+                    Fold a playful frog that can actually jump when pressed from
+                    the back.
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
 
-        <h1>Paper Crane (Tsuru)</h1>
+<!-- Paper Boat -->
 
-        <p>
-          A symbol of peace and good luck in Japan.
-          A great second model for kids and a calm fold for elders.
-        </p>
+<div class="col-lg-4 col-md-6">
+    <a href="boat.html" class="text-decoration-none">
+        <div class="design-card">
+            <img src="Assests/images/gallery/g.boat.jpg.jpeg" alt="Paper Boat">
+            <div class="p-3">
+                <h4>Paper Boat</h4>
+                <p>
+                    One of the easiest and most popular origami creations for
+                    beginners and experienced folders alike.
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
+<!-- Washi paper -->
+<div class="col-lg-4 col-md-6">
+    <a href="washi.html" class="text-decoration-none">
+        <div class="design-card">
+            <img src="Assests/images/gallery/g.washi.jpg.jpeg" alt="Washi Paper">
+            <div class="p-3">
+                <h4>Washi Paper</h4>
+                <p>
+                    A beautiful and versatile paper used for various origami projects.
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
+</div>
 
-        <p class="meta">
-          <span><strong>Level:</strong> EASY</span>
-          <span><strong>Time:</strong> 15 MINUTES</span>
-          <span><strong>Paper:</strong> 15 cm square</span>
-        </p>
-      </div>
+</section>
 
+<section class="cta" aria-label="Share your origami">
+      <h2>Folded something you love? Share it with us.</h2>
+      <a class="btn-green" href="feedback.html">Send feedback</a>
     </section>
 
-    <!-- Steps Section -->
-    <section class="steps">
-      <h2>Steps</h2>
-
-      <div class="steps-grid">
-
-        <!-- Step 1 -->
-        <div class="step-card">
-          <div class="step-img">
-            <img src="Assests/images/easy/1step.png" alt="Step 1">
-          </div>
-          <p>
-            <strong>1.</strong>
-            Start with a square sheet of traditional washi paper
-            and make initial crease guidelines.
-          </p>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="step-card">
-          <div class="step-img">
-            <img src="Assests/images/easy/2step.png" alt="Step 2">
-          </div>
-          <p>
-            <strong>2.</strong>
-            Fold the corners inward toward the center
-            to form the initial kite shape.
-          </p>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="step-card">
-          <div class="step-img">
-            <img src="Assests/images/easy/3step.png" alt="Step 3">
-          </div>
-          <p>
-            <strong>3.</strong>
-            Carefully press and flip the inner layers
-            to align the structural folds.
-          </p>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="step-card">
-          <div class="step-img">
-            <img src="Assests/images/easy/4step.png" alt="Step 4">
-          </div>
-          <p>
-            <strong>4.</strong>
-            Shape the main body structure by lifting
-            and angling the wings upward.
-          </p>
-        </div>
-
-        <!-- Step 5 -->
-        <div class="step-card">
-          <div class="step-img">
-            <img src="Assests/images/easy/5step.png" alt="Step 5">
-          </div>
-          <p>
-            <strong>5.</strong>
-            Perform a small inside reverse fold on one
-            of the tips to create the crane's head.
-          </p>
-        </div>
-
-        <!-- Step 6 -->
-        <div class="step-card">
-          <div class="step-img">
-            <img src="Assests/images/easy/6step.png" alt="Step 6">
-          </div>
-          <p>
-            <strong>6.</strong>
-            Gently open the wings to complete your
-            traditional Japanese origami crane.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
+<!-- FOOTER -->
  <footer class="footer-section">
     <div class="container">
 
@@ -626,9 +307,9 @@
 
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="categories.html">Designs</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="categories.html" target="_blank">Designs</a></li>
+                    <li><a href="gallery.html" target="_blank">Gallery</a></li>
+                    <li><a href="about.html" target="_blank">About</a></li>
                 </ul>
             </div>
 
@@ -637,10 +318,10 @@
                 <h5>Categories</h5>
 
                 <ul class="footer-links">
-                    <li><a href="categories.html#animals">Animals</a></li>
-                    <li><a href="categories.html#birds">Birds</a></li>
-                    <li><a href="categories.html#flowers">Flowers</a></li>
-                    <li><a href="categories.html#boats">Boats</a></li>
+                    <li><a href="categories.html#animals"  target="_blank">Animals</a></li>
+                    <li><a href="categories.html#birds" target="_blank">Birds</a></li>
+                    <li><a href="categories.html#flowers" target="_blank">Flowers</a></li>
+                    <li><a href="categories.html#boats" target="_blank">Boats</a></li>
                 </ul>
             </div>
 
@@ -666,8 +347,8 @@
     </div>
 </footer>
 
-  <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;700&family=Poppins:wght@600;700&display=swap">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assests/css/style.css">
+    <link rel="icon" type="image/x-icon" href="Assests/images/logo/favicon.png">
+    <title>Origami Boat Tutorial | OrigamiForAll</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FBF5EE;
+      color: #455564;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      /* paper plane cursor */
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'%3E%3Cpath d='M2 12 22 3l-5 18-5-7z' fill='%234F7A5E' stroke='%23455564' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 2 12, auto;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Noto Serif JP', serif;
+      color: #455564;
+    }
+
+    a {
+      text-decoration: none;
+      color: #455564;
+    }
+
+    a:hover {
+      color: #4F7A5E;
+    }
+
+    /* ---------- navbar ---------- */
+    .navbar {
+      background: #FFFDF8 !important;
+      padding: 12px 0;
+    }
+
+    .nav-link {
+      color: #474747 !important;
+      font-weight: 600;
+      margin: 0 5px;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #7EA8BE !important;
+    }
+
+    .design-menu {
+      min-width: 350px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .dropdown-header {
+      color: #2a404c;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .dropdown-item {
+      padding: 3px 16px;
+      font-size: 15px;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f8f5ef;
+      color: #7EA8BE;
+    }
+
+    .start-btn {
+      background: #A8C3B0;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    .start-btn:hover {
+      background: #8fb09b;
+      color: white;
+    }
+
+    @media (max-width: 991px) {
+      .navbar-nav { padding-top: 15px; }
+      .nav-item { margin: 5px 0; }
+      .start-btn { width: 100%; margin-top: 10px; }
+    }
+
+    /* ---------- main + breadcrumb ---------- */
+    .main-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      padding: 28px 0 24px;
+    }
+
+    .breadcrumb strong {
+      color: #4a5866;
+    }
+
+    /* ---------- hero ---------- */
+    .design-hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .photo-box {
+      background: #F4E3D7;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(69, 85, 100, 0.15);
+      /* reveals from the left first, then floats gently */
+      animation:
+        heroReveal 1s ease-out backwards,
+        heroFloat 6s ease-in-out 1s infinite;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* starts slightly zoomed in, then settles */
+      animation: heroZoom 1.8s ease-out backwards;
+      transition: transform 0.6s ease;
+    }
+
+    /* slow zoom on hover */
+    .photo-box:hover img {
+      transform: scale(1.06);
+    }
+
+    @keyframes heroReveal {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+        clip-path: inset(0 100% 0 0 round 8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+        clip-path: inset(0 0 0 0 round 8px);
+      }
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.2); }
+      to { transform: scale(1); }
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #4F7A5E;
+    }
+
+    .design-info h1 {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .design-info p {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .meta {
+      font-size: 14px;
+    }
+
+    .meta strong {
+      color: #4a5866;
+    }
+
+    .meta span {
+      margin-right: 14px;
+    }
+
+    /* ---------- steps ---------- */
+    .steps {
+      margin: 50px 0 60px;
+    }
+
+    .steps h2 {
+      font-size: 28px;
+      margin-bottom: 22px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .step-card {
+      background: #fff;
+      border: 1px solid #E6D5C5;
+      padding: 18px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(69, 85, 100, 0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      /* cards slide up one after another */
+      animation: cardUp 0.6s ease backwards;
+    }
+
+    /* in browsers that support scroll animations, cards reveal as you scroll */
+    @supports (animation-timeline: view()) {
+      .step-card {
+        animation: cardUp linear backwards;
+        animation-delay: 0s;
+        animation-timeline: view();
+        animation-range: entry 0% entry 45%;
+      }
+    }
+
+    @keyframes cardUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* hover: card lifts, border turns green, image zooms slowly */
+    .step-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 28px rgba(69, 85, 100, 0.15);
+      border-color: #4F7A5E;
+    }
+
+    .step-img {
+      background: #F4E3D7;
+      height: 200px;
+      width: 100%;
+      margin-bottom: 16px;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
+    .step-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .step-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .step-card strong {
+      color: #455564;
+    }
+
+    @media (max-width: 991px) {
+      .design-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- footer ---------- */
+    .footer-section {
+      background-color: #1f2937;
+      color: #fff;
+      padding: 60px 0 20px;
+    }
+
+    .footer-section h5 {
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer-section p {
+      color: #d1d5db;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+    }
+
+    .footer-links a:hover {
+      color: #7EA8BE;
+    }
+
+    .copyright p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    @media (max-width: 576px) {
+      .footer-section img {
+        width: 140px;
+      }
+    }
+
+    /* turn off animations for people who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .step-card,
+      .step-img img,
+      .photo-box,
+      .photo-box img {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="Assests/images/logo/SVG-preview (1).png" alt="OrigamiForAll Logo" width="220" class="me-2">
+            <!-- <span class="logo-text">OrigamiForAll</span> -->
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainMenu">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu Links -->
+        <div class="collapse navbar-collapse" id="mainMenu">
+
+            <ul class="navbar-nav ms-auto text-center">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="designDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Design
+                    </a>
+
+                    <div class="dropdown-menu p-3 design-menu">
+                       <div class="row">
+                         <div class="col-6">
+                           <h6 class="dropdown-header">By Level</h6>
+                            <a class="dropdown-item" href="Easy.html" target="_blank">Easy  (kids)</a>
+                            <a class="dropdown-item" href="Medium.html" target="_blank">Medium</a>
+                            <a class="dropdown-item" href="Complex.html" target="_blank">Complex (elders)</a>
+                         </div>
+                        <div class="col-6">
+                          <h6 class="dropdown-header">By Category</h6>
+                          <a class="dropdown-item" href="categories.html#faces">Faces</a>
+                           <a class="dropdown-item" href="categories.html#animals">Animals</a>
+                           <a class="dropdown-item" href="categories.html#birds">Birds</a>
+                          <a class="dropdown-item" href="categories.html#flowers">Flowers</a>
+                          <a class="dropdown-item" href="categories.html" target="_blank">All 10 categories</a>
+            </div>
+
+        </div>
+    </div>
+</li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html" target="_blank">Gallery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html" target="_blank">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html" target="_blank">Feedback</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html" target="_blank">Contact</a>
+                </li>
+
+            </ul>
+
+            <!-- Button -->
+            <div class="ms-lg-3 text-center mt-3 mt-lg-0">
+                <a href="folding.html" target="_blank" class="btn start-btn">
+                    Start Folding
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main-container">
+
+    <nav class="breadcrumb">
+      <a href="designs.html">Designs</a> /
+      <a href="designs.html?cat=animals">Crafts</a> /
+      <strong>Origami Boat</strong>
+    </nav>
+
+    <!-- hero -->
+    <section class="design-hero">
+
+      <div class="photo-box">
+        <img src="Assests/images/gallery/g.boat.jpg.jpeg" alt="Origami Boat">
+      </div>
+
+      <div class="design-info">
+        <p class="tag">ORIGAMI &middot; Easy</p>
+        <h1>Origami Boat</h1>
+        <p>A symbol of peace and good luck in Japan. A great second model for kids and a calm fold for elders.</p>
+
+        <p class="meta">
+          <span><strong>Level:</strong> EASY</span>
+          <span><strong>Time:</strong> 50 MINUTES</span>
+          <span><strong>Paper:</strong> 15 cm square</span>
+        </p>
+      </div>
+
+    </section>
+
+    <!-- steps -->
+    <section class="steps">
+      <h2>Steps</h2>
+
+      <div class="steps-grid">
+
+        <div class="step-card">
+          <div class="step-img">
+            <img src="" alt="Step 1">
+          </div>
+          <p><strong>1.</strong> Gather all the patterned square papers, scissors, a glue stick, and a ruler.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-img">
+            <img src="" alt="Step 2">
+          </div>
+          <p><strong>2.</strong> Fold and crease the patterned papers into diamond shapes.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-img">
+            <img src="" alt="Step 3">
+          </div>
+          <p><strong>3.</strong> Assemble and arrange the folded pieces into a circular fan shape.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-img">
+            <img src="" alt="Step 4">
+          </div>
+          <p><strong>4.</strong> Prepare the individual folded components, head base, and body sections.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-img">
+            <img src="" alt="Step 5">
+          </div>
+          <p><strong>5.</strong> Combine the head, body, and fan tail to form the origami boat.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-img">
+            <img src="" alt="Step 6">
+          </div>
+          <p><strong>6.</strong> Your finished origami boat decoration is complete and ready to display.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+ <footer class="footer-section">
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <!-- Logo & About -->
+            <div class="col-lg-4">
+                <img src="Assests/images/logo/jpeg.jpg" alt="Logo" width="180">
+
+                <p class="mt-3">
+                    Origami For All helps people of every age discover the joy of paper folding through fun and easy-to-follow tutorials.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <h5>Quick Links</h5>
+
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="categories.html">Designs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="col-lg-3 col-md-6">
+                <h5>Categories</h5>
+
+                <ul class="footer-links">
+                    <li><a href="categories.html#animals">Animals</a></li>
+                    <li><a href="categories.html#birds">Birds</a></li>
+                    <li><a href="categories.html#flowers">Flowers</a></li>
+                    <li><a href="categories.html#boats">Boats</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-lg-3">
+                <h5>Contact</h5>
+
+                <p>Email: info@origamiforall.com</p>
+                <p>Phone: +92 300 1234567</p>
+                <p>Pakistan</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center copyright">
+            <p>
+                © 2026 Origami For All. All Rights Reserved.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+  <!-- Bootstrap's own script, needed for the navbar toggle and dropdown -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
